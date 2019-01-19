@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./Sophie Marceau1.jpg" alt="" width="300">
+    <canvas id="canvas" width="300px" height="300px"></canvas>
+</body>
+<script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    // 实心矩形
+    // ctx.fillStyle = 'green';
+    // ctx.fillRect(20,20,100,100);
+    // ctx.fillStyle = 'red';
+    // ctx.fillRect(50,50,100,100);
+    // // 矩形边框
+    // ctx.strokeStyle='blue';
+    // ctx.strokeRect(70, 70, 100, 100);
+
+    // 绘制三角形
+    // ctx.beginPath();
+    // ctx.moveTo(20,20);
+    // ctx.lineTo(200,100);
+    // ctx.lineTo(200,200);
+    // 路径自动闭合
+    // ctx.closePath();
+    // 描边
+    // ctx.stroke();
+    // 自动填充
+    // ctx.fill();
+
+    // 绘制圆弧1
+    /* 
+    ctx.beginPath();
+    ctx.arc(150,150,50,-Math.PI/4,-Math.PI/2-Math.PI/4,true);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.fill();  
+    */
+
+    // 绘制圆弧2 两直线相切圆弧
+    /* 
+    ctx.beginPath();
+    ctx.moveTo(50,50);
+    ctx.arcTo(200, 50, 200, 200, 100);
+    ctx.lineTo(200, 200)
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.rect(50, 50, 10, 10);
+    ctx.rect(200, 50, 10, 10);
+    ctx.rect(200, 200, 10, 10);
+    ctx.fill(); 
+    */
+
+    // 绘制二次贝塞尔曲线
+    /* 
+    ctx.beginPath();
+    ctx.moveTo(10, 200); //起始点
+    var cp1x = 100, cp1y = 100;  //控制点
+    var x = 200, y = 200; // 结束点
+    //绘制二次贝塞尔曲线
+    ctx.quadraticCurveTo(cp1x, cp1y, x, y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.rect(10, 200, 10, 10);
+    ctx.rect(cp1x, cp1y, 10, 10);
+    ctx.rect(x, y, 10, 10);
+    ctx.fill(); 
+    */
+
+    // 绘制三次贝塞尔曲线
+    /* 
+    ctx.beginPath();
+    ctx.moveTo(40, 200); //起始点
+    var cp1x = 60, cp1y = 100;  //控制点1
+    var cp2x = 120, cp2y = 240;  //控制点2
+    var x = 200, y = 200; // 结束点
+    ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.rect(40, 200, 10, 10);
+    ctx.rect(cp1x, cp1y, 10, 10);
+    ctx.rect(cp2x, cp2y, 10, 10);
+    ctx.rect(x, y, 10, 10);
+    ctx.fill(); 
+    */
+
+    /* 
+    for (var i = 0; i < 6; i++){
+        for (var j = 0; j < 6; j++){
+            ctx.fillStyle = 'rgb(' + Math.floor(255 - 42.5 * i) + ',' + Math.floor(255 - 42.5 * j) + ',0)';
+            ctx.fillRect(j * 50, i * 50, 50, 50);
+        }
+    }
+    */
+
+    /* 
+    for (var i = 0; i < 6; i++){
+        for (var j = 0; j < 6; j++){
+            ctx.strokeStyle = `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+            ctx.strokeRect(j * 50, i * 50, 45, 45);
+        }
+    }
+    function randomInt(from, to){
+        return parseInt(Math.random() * (to - from + 1) + from);
+    } 
+    */
+
+    // 设置线段样式
+    /* 
+    var lineCaps = ["butt", "round", "square"];
+
+    for (var i = 0; i < 3; i++){
+        ctx.beginPath();
+        ctx.moveTo(20 + 30 * i, 30);
+        ctx.lineTo(20 + 30 * i, 100);
+        ctx.lineWidth = 20;
+        ctx.lineCap = lineCaps[i];
+        ctx.stroke();
+    }
+
+    ctx.beginPath();
+    ctx.moveTo(0, 30);
+    ctx.lineTo(300, 30);
+
+    ctx.moveTo(0, 100);
+    ctx.lineTo(300, 100)
+
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 1;
+    ctx.stroke(); 
+    */
+
+    // 设置线与线结合处样式
+    /* 
+    var lineJoin = ['round', 'bevel', 'miter'];
+    ctx.lineWidth = 20;
+
+    for (var i = 0; i < lineJoin.length; i++){
+        ctx.lineJoin = lineJoin[i];
+        ctx.beginPath();
+        ctx.moveTo(50, 50 + i * 50);
+        ctx.lineTo(100, 100 + i * 50);
+        ctx.lineTo(150, 50 + i * 50);
+        ctx.lineTo(200, 100 + i * 50);
+        ctx.lineTo(250, 50 + i * 50);
+        ctx.stroke();
+    } 
+    */
+
+    // 虚线
+    /* 
+    ctx.setLineDash([20, 5]);  // [实线长度, 间隙长度]
+    ctx.lineDashOffset = -5; // 设置起始偏移量
+    ctx.strokeRect(50, 50, 210, 210); 
+    */
+
+    // 绘制文本
+    /* 
+    ctx.font = "30px sans-serif";
+    var txt = '大吉大利';
+    ctx.fillText(txt, 90, 100);
+    ctx.strokeText(txt, 90, 150);
+    ctx.strokeText('字宽:' + ctx.measureText(txt).width,90,200); 
+    */
+
+    // 绘制图片
+    /* 1.由零开始创建图片
+    var img = new Image();              // 创建img元素
+    img.onload = function () {
+        ctx.drawImage(img, 0, 0,300,300)
+    }
+    img.src = './Sophie Marceau2.jpeg'; // 设置图片源地址 
+    */
+
+    /*  2.绘制 img 标签元素中的图片,并切片
+    document.querySelector("img").onclick = function (){
+        var img = document.querySelector("img");
+        ctx.drawImage(img, 270, 50,250,250,70,70,150,150);
+    }  
+    */
+
+    // 状态保存
+    /* 
+    ctx.fillRect(0, 0, 150, 150);   // 使用默认设置绘制一个矩形
+    ctx.save();                  	// 保存默认状态
+    ctx.fillStyle = 'red'       	// 在原有配置基础上对颜色做改变
+    ctx.fillRect(15, 15, 120, 120); // 使用新的设置绘制一个矩形
+    ctx.save();                  	// 保存当前状态
+    ctx.fillStyle = '#FFF';       	// 再次改变颜色配置
+    ctx.fillRect(30, 30, 90, 90);   // 使用新的配置绘制一个矩形//
+    ctx.restore();               	// 重新加载之前的颜色状态
+    ctx.fillRect(45, 45, 60, 60);   // 使用上一次的配置绘制一个矩形//
+    ctx.restore();               	// 加载默认颜色配置
+    ctx.fillRect(60, 60, 30, 30);   // 使用加载的配置绘制一个矩形 
+    */
+
+    // 变形
+    /* 1.translate
+    ctx.save();                     // 保存坐原点平移之前的状态
+    ctx.translate(125, 125);
+    ctx.strokeRect(0, 0, 50, 50);
+    ctx.restore();                  // 恢复到最初状态
+    ctx.translate(50, 50);
+    ctx.fillRect(0, 0, 50, 50); 
+    */
+
+    /* 2.rotate
+    ctx.fillStyle = "red";
+    ctx.save();
+    ctx.translate(150, 100);
+    ctx.rotate(Math.PI / 4);
+    ctx.fillStyle = "blue";
+    ctx.fillRect(0, 0, 50, 50);
+    ctx.restore();
+    ctx.save();
+    ctx.translate(150, 100);
+    ctx.fillRect(0, 0, 50, 50);
+    ctx.restore(); 
+    */ 
+   
+
+    /* 3.scale
+    ctx.strokeRect(10, 10, 20, 20);
+    ctx.scale(2, 2);
+    ctx.strokeRect(10, 10, 20, 20);
+    ctx.scale(2, 2);
+    ctx.strokeRect(10, 10, 20, 20);
+    ctx.scale(2, 2);
+    ctx.strokeRect(10, 10, 20, 20); 
+    */
+
+    /* 4.transform
+    ctx.fillStyle = "red";
+    ctx.translate(150, 50);
+    ctx.fillRect(0, 0, 50, 50)
+    ctx.transform(1, 0.5, -0.5, 1, 30, 10);
+    ctx.fillStyle = "orange";
+    ctx.fillRect(0, 0, 50, 50);
+    ctx.transform(1, 0.5, -0.5, 1, 30, 10);
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(0, 0, 50, 50);
+    ctx.transform(1, 0.5, -0.5, 1, 30, 10);
+    ctx.fillStyle = "green";
+    ctx.fillRect(0, 0, 50, 50);
+    ctx.transform(1, 0.5, -0.5, 1, 30, 10);
+    ctx.fillStyle = "cyan";
+    ctx.fillRect(0, 0, 50, 50);
+    ctx.transform(1, 0.5, -0.5, 1, 30, 10);
+    ctx.fillStyle = "blue";
+    ctx.fillRect(0, 0, 50, 50);
+    ctx.transform(1, 0.5, -0.5, 1, 30, 10);
+    ctx.fillStyle = "purple";
+    ctx.fillRect(0, 0, 50, 50); 
+    */
+
+    // 合成
+    /* 
+    ctx.fillStyle = "blue";
+    ctx.fillRect(0, 0, 200, 200);
+
+    ctx.globalCompositeOperation = "xor"; //全局合成操作
+    ctx.fillStyle = "red";
+    ctx.fillRect(100, 100, 200, 200); 
+    */
+
+    // 裁剪
+    /* 
+    ctx.beginPath();
+    ctx.arc(150, 150, 100, 0, Math.PI * 2);
+    ctx.clip();
+    ctx.fillStyle = "skyblue";
+    ctx.fillRect(50, 50, 200, 200); 
+    */
+
+    
+
+</script>
+
+</html>
